@@ -92,6 +92,7 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 
 autocmd! bufwritepost .vimrc source $MYVIMRC
 autocmd vimenter * NERDTree
+autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
