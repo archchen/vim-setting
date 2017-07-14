@@ -13,6 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'tell-k/vim-autopep8'
 
 Plugin 'vim-scripts/indentpython.vim'
 
@@ -105,3 +108,17 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
+    
+map <F5> :Autopep8<CR> :w<CR> :call RunPython()<CR>
+
+function RunPython()
+  let mp = &makeprg
+  let ef = &errorformat
+  let exeFile = expand("%:t")
+  setlocal makeprg=python\ -u
+  set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+  silent make %
+  copen
+  let &makeprg = mp
+  let &errorformat = ef
+endfunction
