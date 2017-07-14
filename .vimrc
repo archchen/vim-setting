@@ -69,6 +69,12 @@ au BufNewFile,BufRead *.js,*.html,*.css
 
 set nu
 set laststatus=2
+
+set autoread
+set cursorline        "突出显示当前行"
+set cursorcolumn        "突出显示当前列"
+
+
 " enable powerline-fonts
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
